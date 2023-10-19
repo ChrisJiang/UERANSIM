@@ -159,8 +159,8 @@ void UeAppTask::setupTunInterface(const PduSession *pduSession)
         return;
     }
 
-    if (pduSession->pduAddress->sessionType != nas::EPduSessionType::IPV4 ||
-        pduSession->sessionType != nas::EPduSessionType::IPV4)
+    if (pduSession->pduAddress->sessionType != nas::EPduSessionType::IPV4 && pduSession->pduAddress->sessionType != nas::EPduSessionType::IPV6
+    || pduSession->sessionType != nas::EPduSessionType::IPV4 && pduSession->sessionType != nas::EPduSessionType::IPV6)
     {
         m_logger->err("Connection could not setup. PDU session type is not supported.");
         return;

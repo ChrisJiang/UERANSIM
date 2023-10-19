@@ -289,8 +289,8 @@ static std::unique_ptr<UeCliCommand> UeCliParseImpl(const std::string &subCmd, c
         if (options.positionalCount() > 15)
             CMD_ERR("Only one PDU session type is expected")
         std::string type = options.getPositional(0);
-        if (type != "IPv4" && type != "ipv4" && type != "IPV4" && type != "Ipv4" && type != "IpV4")
-            CMD_ERR("Only IPv4 is supported for now")
+        if (type != "IPv4" && type != "ipv6")
+            CMD_ERR("Only IPv4 and IPv6 are supported for now")
         cmd->isEmergency = options.hasFlag('e', "emergency");
         if (cmd->isEmergency)
         {

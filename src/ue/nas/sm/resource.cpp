@@ -115,6 +115,7 @@ void NasSm::establishRequiredSessions()
         if (!anyEmergencySession())
         {
             SessionConfig config;
+            // Emergency Session always be IPV4???
             config.type = nas::EPduSessionType::IPV4;
             config.apn = std::nullopt;
             config.sNssai = std::nullopt;
