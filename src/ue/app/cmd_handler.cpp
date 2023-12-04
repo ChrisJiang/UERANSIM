@@ -187,12 +187,14 @@ void UeCmdHandler::handleCmdImpl(NmUeCliCommand &msg)
     case app::UeCliCommand::PS_ESTABLISH: {
         SessionConfig config;
         switch (msg.address.getIpVersion())
+        case 6: {
+            config.type = nas::EPduSessionType::IPV6;
+            break;
+        }
         default:
         case 4: {
             config.type = nas::EPduSessionType::IPV4;
-        }
-        case 6: {
-            config.type = nas::EPduSessionType::IPV6;
+            break;
         }
         config.isEmergency = msg.cmd->isEmergency;
         config.apn = msg.cmd->apn;
